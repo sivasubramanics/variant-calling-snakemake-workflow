@@ -3,7 +3,6 @@
 This is a Snakemake workflow implementing the multi-sample variant calling with "bcftools" and DeepVariant. It also allows for single-sample variant calling, and creating a merged vcf files.
 
 ## Usage
----
 
 This workflow requires few preinstalled tools, which help few rules handle pipeing of STDOUT in order to reduce processing time.
 
