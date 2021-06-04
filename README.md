@@ -8,6 +8,17 @@ This workflow requires few preinstalled tools, which help few rules handle pipei
 
 ### Install these prerequisites:
 
+#### Option 1 (Recommended)
+
+Creating a conda environment to handle the dependecies smooth using [mamba](https://mamba.readthedocs.io/en/latest/installation.html)
+
+```bash
+ mamba create -n snakemake -c conda-forge -c bioconda snakemake python=3.6 singularity fastp minimap2 samtools bcftools
+```
+Note: There maybe dependencies failure if we install these tools using pip or apt due to the version mismatch
+
+#### Option 2
+
 - [x] snakemake: [min version 6.0](https://snakemake.readthedocs.io/en/v6.0.0/getting_started/installation.html#:~:text=for%20installing%20Snakemake.-,Installation%20via%20Conda,See%20here%20for%20installation%20instructions.)
 - [x] fastp: [Installation reference url](https://github.com/OpenGene/fastp)
 - [x] minimap2: [Installation reference url](https://github.com/lh3/minimap2)

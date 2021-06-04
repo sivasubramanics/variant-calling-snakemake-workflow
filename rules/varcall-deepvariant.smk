@@ -1,4 +1,4 @@
-
+# Rule to call gVCF variants using Deepvariant
 rule deepvariant_gvcf:
 	input:
 		bam = OUTPUTDIR + "bamfiles/{sample}.dedup.bam",
@@ -21,6 +21,7 @@ rule deepvariant_gvcf:
 	wrapper:
 		"0.74.0/bio/deepvariant"
 
+# Rule to merge gVCF to get vcf using glnexus
 rule glnexus:
 	input:
 		gvcfs=lambda w: expand(OUTPUTDIR + "gvcf_calls/{sample}.g.vcf.gz", sample=SAMPLES),

@@ -75,7 +75,6 @@ rule mark_duplicates:
     wrapper:
         "0.74.0/bio/picard/markduplicates"
 
-
 # Rule to index deduped bam files.
 rule dedup_bam_index:
 	input:
