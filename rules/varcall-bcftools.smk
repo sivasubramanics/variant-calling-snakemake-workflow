@@ -1,7 +1,5 @@
+# Rule to create a list of bam files.
 rule list_bams:
-"""
-	Rule to create a list of bam files.
-"""
 	input:
 		expand(OUTPUTDIR + "bamfiles/" + "{sample}.dedup.bam", sample=SAMPLES),
 		expand(OUTPUTDIR + "bamfiles/" + "{sample}.dedup.bam.bai", sample=SAMPLES)
@@ -14,10 +12,8 @@ rule list_bams:
 	shell:
 		r"ls -c1 {params.bam_dir} > {output}"
 
+# Rule to call variations using bcftools.
 rule bcftools_varcalling:
-"""
-	Rule to call variations using bcftools.
-"""
 	input:
 		genome_fasta = WORKINGDIR + "reference/genome.fasta",
 		sortbamlist = OUTPUTDIR + "SortedBams"

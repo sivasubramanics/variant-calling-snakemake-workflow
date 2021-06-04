@@ -1,7 +1,5 @@
+# Rule to do QC and trim of fastq reads using fastp.
 rule fastp:
-"""
-	Rule to do QC and trim of fastq reads using fastp.
-"""
 	input:
 		get_fastq
 	output:
@@ -60,10 +58,8 @@ rule fastp:
 				{params.in_and_out_files} \
 				2> {log}")
 
+# Rule to compile fastp results.
 rule multiqc:
-"""
-	Rule to compile fastp results.
-"""
 	input:
 		expand(WORKINGDIR + "fastp/{sample}_fastp.json", sample = SAMPLES)
 	output:

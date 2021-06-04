@@ -4,10 +4,10 @@ output_dir:  results/ # should be kept
 working_dir: temp_dir/    # can be removed (temporary files)
 
 # Binaries - Make sure the below mentioned tools are installed in the system. The reason we are not using wrappers for these rules, because, we are pipeling the outputs to reduce run times.
-fastp_binary: /data/Programs/fastp/fastp
-minimap2_binary: /data/Programs/minimap2/minimap2
-samtools_binary: /data/Programs/samtools-1.9/samtools
-bcftools_binary: /data/Programs/bcftools-1.9/bcftools
+fastp_binary: /home/sivasubramani/miniconda3/bin/fastp
+minimap2_binary: /home/sivasubramani/miniconda3/bin/minimap2
+samtools_binary: /home/sivasubramani/Programs/samtools-1.12/samtools
+bcftools_binary: /home/sivasubramani/Programs/bcftools-1.12/bcftools
 
 
 # samples to condition; Tab delimited file; sample<TAB>fq1<TAB>fq2
@@ -19,5 +19,5 @@ genome_fasta: "test-data/NC_045512.fasta"
 # read quality trimming
 fastp:
   qualified_quality_phred: 30 # Phred+33 score (> 15 for Proton Ion, > 30 or more for Illumina) 
-  adaptor_fasta: "/data/Programs/Trimmomatic-0.39/adapters/TruSeq3-PE.fa"
+  adaptor_fasta: "extras/TruSeq3-PE.fa"
 

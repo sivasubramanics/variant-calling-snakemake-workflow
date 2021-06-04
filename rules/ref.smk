@@ -1,9 +1,8 @@
 import os
 
+
+# Rule to make symbolic link for the reference genome
 rule reference_symlink:
-"""
-	Rule to make symbolic link for the reference genome
-"""
 	input:
 		genome_fasta = os.path.abspath(config['genome_fasta'])
 	output:
@@ -16,10 +15,8 @@ rule reference_symlink:
 		# "mkdir {params.genome_dir}; "
 		"ln -s {input.genome_fasta} {output.genome_fasta_symlink}"
 
+# Rule to index reference genome using minimap2
 rule minimap_index:
-"""
-	Rule to index reference genome using minimap2
-"""
 	input:
 		genome_fasta = WORKINGDIR + 'reference/genome.fasta'
 	output:
@@ -31,10 +28,9 @@ rule minimap_index:
 	shell:
 		"{minimap2} -d {output.genome_index} {input.genome_fasta} 2> {log}"
 
+
+# Rule to index reference genome using samtools.
 rule samtools_index:
-"""
-	Rule to index reference genome using samtools.
-"""
 	input:
 		WORKINGDIR + 'reference/genome.fasta'
 	output:

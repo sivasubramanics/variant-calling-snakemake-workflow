@@ -41,10 +41,9 @@ BCFTOOLS_VCFFILE = OUTPUTDIR + "bcftools.vcf.gz"
 DEEPVARIANT_VCFFILE = OUTPUTDIR + "deepvariant.vcf.gz"
 
 
+
+# Rule defining expected outputfiles.
 rule all:
-"""
-	Rule defining expected outputfiles.
-"""
 	input:
 		MULTIQC,
 		BAM_FILES,

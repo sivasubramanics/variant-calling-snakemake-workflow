@@ -1,7 +1,5 @@
+# Rule to map the trimmed fastq reads on the indexed genome and the ouput is piped to samtools, in order sort the bam entries
 rule minimap_mapping:
-"""
-	Rule to map the trimmed fastq reads on the indexed genome and the ouput is piped to samtools, in order sort the bam entries
-"""
 	input:
 		genome_index = WORKINGDIR + "reference/genome.mmi",
 		genome_fasta = WORKINGDIR + "reference/genome.fasta",
@@ -44,10 +42,8 @@ rule minimap_mapping:
 			--reference {input.genome_fasta} \
 			-o {output} - 2> {log}")
 
+# Rule to index the sorted bam files
 rule bam_index:
-"""
-	Rule to index the sorted bam files
-"""
 	input:
 		OUTPUTDIR + "bamfiles/{sample}.sort.bam"
 	output:
@@ -61,10 +57,8 @@ rule bam_index:
 	wrapper:
 		"0.74.0/bio/samtools/index"
 
+# Rule to mark PCR duplicated reads on the bam file, using picard
 rule mark_duplicates:
-"""
-	Rule to mark PCR duplicated reads on the bam file, using picard
-"""
     input:
         OUTPUTDIR + "bamfiles/{sample}.sort.bam"
     output:
@@ -81,10 +75,9 @@ rule mark_duplicates:
     wrapper:
         "0.74.0/bio/picard/markduplicates"
 
+
+# Rule to index deduped bam files.
 rule dedup_bam_index:
-"""
-	Rule to index deduped bam files.
-"""
 	input:
 		OUTPUTDIR + "bamfiles/{sample}.dedup.bam"
 	output:
